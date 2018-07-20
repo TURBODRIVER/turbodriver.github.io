@@ -1,7 +1,20 @@
 ---
 ---
 @import "{{ site.theme }}";
+
 .page-header {
-background-color: #8C00CD;
-background-image: linear-gradient(120deg, #3B0057, #8C00CD);
+  background-color: #8C00CD;
+  background-image: linear-gradient(120deg, #3B0057, #8C00CD);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  color: #3B0057;
 }

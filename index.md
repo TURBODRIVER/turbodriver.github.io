@@ -5,3 +5,7 @@ A simple and user-friendly reader for The Sims 4 lastException error files. It a
 ## WickedWhims
 
 A game modification for The Sims 4 that extendes the game with a long list of adult themed features.
+
+## The Sims 4 Mods
+
+Collection of modifications for The Sims 4 game.

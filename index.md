@@ -4,7 +4,11 @@ A simple and user-friendly reader for The Sims 4 lastException error files. It a
 
 ## WickedWhims
 
-A game modification for The Sims 4 that extendes the game with a long list of adult themed features.
+A game modification for The Sims 4 that extends the game with a long list of adult themed features.
+
+## WonderfulWhims
+
+A game modification for The Sims 4 that extends the game with features like Menstrual Cycle, Birth Control, Attractiveness, Personality, and more.
 
 ## The Sims 4 Mods
 

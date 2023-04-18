@@ -1,20 +1,683 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>The Sims 4 Simulation Lag</title>
 
     <meta charset="UTF-8">
-    <meta property="og:title" content="The Sims 4 Simulation Lag" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="description" content="Diagnostic information about The Sims 4 simulation lag." />
-    <meta property="og:description" content="Diagnostic information about The Sims 4 simulation lag." />
-    <link rel="canonical" href="https://turbodriver.github.io/" />
-    <meta property="og:url" content="https://turbodriver.github.io/simulation.html" />
-    <meta property="og:site_name" content="The Sims 4 Simulation Lag" />
+    <meta property="og:title" content="The Sims 4 Simulation Lag">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Diagnostic information about The Sims 4 simulation lag.">
+    <meta property="og:description" content="Diagnostic information about The Sims 4 simulation lag.">
+    <link rel="canonical" href="https://turbodriver.github.io/">
+    <meta property="og:url" content="https://turbodriver.github.io/simulation.html">
+    <meta property="og:site_name" content="The Sims 4 Simulation Lag">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=a051ea4845a72316dacac7c701014ac2ac374345">
+    <style>
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+html{
+    font-family:sans-serif;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%
+}
+body{
+    margin:0
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{
+    display:block
+}
+audio,canvas,progress,video{
+    display:inline-block;
+    vertical-align:baseline
+}
+audio:not([controls]){
+    display:none;
+    height:0
+}
+[hidden],template{
+    display:none
+}
+a{
+    background-color:transparent
+}
+a:active,a:hover{
+    outline:0
+}
+abbr[title]{
+    border-bottom:1px dotted
+}
+b,strong{
+    font-weight:bold
+}
+dfn{
+    font-style:italic
+}
+h1{
+    font-size:2em;
+    margin:0.67em 0
+}
+mark{
+    background:#ff0;
+    color:#000
+}
+small{
+    font-size:80%
+}
+sub,sup{
+    font-size:75%;
+    line-height:0;
+    position:relative;
+    vertical-align:baseline
+}
+sup{
+    top:-0.5em
+}
+sub{
+    bottom:-0.25em
+}
+img{
+    border:0
+}
+svg:not(:root){
+    overflow:hidden
+}
+figure{
+    margin:1em 40px
+}
+hr{
+    box-sizing:content-box;
+    height:0
+}
+pre{
+    overflow:auto
+}
+code,kbd,pre,samp{
+    font-family:monospace, monospace;
+    font-size:1em
+}
+button,input,optgroup,select,textarea{
+    color:inherit;
+    font:inherit;
+    margin:0
+}
+button{
+    overflow:visible
+}
+button,select{
+    text-transform:none
+}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{
+    -webkit-appearance:button;
+    cursor:pointer
+}
+button[disabled],html input[disabled]{
+    cursor:default
+}
+button::-moz-focus-inner,input::-moz-focus-inner{
+    border:0;
+    padding:0
+}
+input{
+    line-height:normal
+}
+input[type="checkbox"],input[type="radio"]{
+    box-sizing:border-box;
+    padding:0
+}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{
+    height:auto
+}
+input[type="search"]{
+    -webkit-appearance:textfield;
+    box-sizing:content-box
+}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{
+    -webkit-appearance:none
+}
+fieldset{
+    border:1px solid #c0c0c0;
+    margin:0 2px;
+    padding:0.35em 0.625em 0.75em
+}
+legend{
+    border:0;
+    padding:0
+}
+textarea{
+    overflow:auto
+}
+optgroup{
+    font-weight:bold
+}
+table{
+    border-collapse:collapse;
+    border-spacing:0
+}
+td,th{
+    padding:0
+}
+.highlight table td{
+    padding:5px
+}
+.highlight table pre{
+    margin:0
+}
+.highlight .cm{
+    color:#999988;
+    font-style:italic
+}
+.highlight .cp{
+    color:#999999;
+    font-weight:bold
+}
+.highlight .c1{
+    color:#999988;
+    font-style:italic
+}
+.highlight .cs{
+    color:#999999;
+    font-weight:bold;
+    font-style:italic
+}
+.highlight .c,.highlight .cd{
+    color:#999988;
+    font-style:italic
+}
+.highlight .err{
+    color:#a61717;
+    background-color:#e3d2d2
+}
+.highlight .gd{
+    color:#000000;
+    background-color:#ffdddd
+}
+.highlight .ge{
+    color:#000000;
+    font-style:italic
+}
+.highlight .gr{
+    color:#aa0000
+}
+.highlight .gh{
+    color:#999999
+}
+.highlight .gi{
+    color:#000000;
+    background-color:#ddffdd
+}
+.highlight .go{
+    color:#888888
+}
+.highlight .gp{
+    color:#555555
+}
+.highlight .gs{
+    font-weight:bold
+}
+.highlight .gu{
+    color:#aaaaaa
+}
+.highlight .gt{
+    color:#aa0000
+}
+.highlight .kc{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .kd{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .kn{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .kp{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .kr{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .kt{
+    color:#445588;
+    font-weight:bold
+}
+.highlight .k,.highlight .kv{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .mf{
+    color:#009999
+}
+.highlight .mh{
+    color:#009999
+}
+.highlight .il{
+    color:#009999
+}
+.highlight .mi{
+    color:#009999
+}
+.highlight .mo{
+    color:#009999
+}
+.highlight .m,.highlight .mb,.highlight .mx{
+    color:#009999
+}
+.highlight .sb{
+    color:#d14
+}
+.highlight .sc{
+    color:#d14
+}
+.highlight .sd{
+    color:#d14
+}
+.highlight .s2{
+    color:#d14
+}
+.highlight .se{
+    color:#d14
+}
+.highlight .sh{
+    color:#d14
+}
+.highlight .si{
+    color:#d14
+}
+.highlight .sx{
+    color:#d14
+}
+.highlight .sr{
+    color:#009926
+}
+.highlight .s1{
+    color:#d14
+}
+.highlight .ss{
+    color:#990073
+}
+.highlight .s{
+    color:#d14
+}
+.highlight .na{
+    color:#008080
+}
+.highlight .bp{
+    color:#999999
+}
+.highlight .nb{
+    color:#0086B3
+}
+.highlight .nc{
+    color:#445588;
+    font-weight:bold
+}
+.highlight .no{
+    color:#008080
+}
+.highlight .nd{
+    color:#3c5d5d;
+    font-weight:bold
+}
+.highlight .ni{
+    color:#800080
+}
+.highlight .ne{
+    color:#990000;
+    font-weight:bold
+}
+.highlight .nf{
+    color:#990000;
+    font-weight:bold
+}
+.highlight .nl{
+    color:#990000;
+    font-weight:bold
+}
+.highlight .nn{
+    color:#555555
+}
+.highlight .nt{
+    color:#000080
+}
+.highlight .vc{
+    color:#008080
+}
+.highlight .vg{
+    color:#008080
+}
+.highlight .vi{
+    color:#008080
+}
+.highlight .nv{
+    color:#008080
+}
+.highlight .ow{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .o{
+    color:#000000;
+    font-weight:bold
+}
+.highlight .w{
+    color:#bbbbbb
+}
+.highlight{
+    background-color:#f8f8f8
+}
+*{
+    box-sizing:border-box
+}
+body{
+    padding:0;
+    margin:0;
+    font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    color:#606c71
+}
+a{
+    color:#1e6bb8;
+    text-decoration:none
+}
+a:hover{
+    text-decoration:underline
+}
+.btn{
+    display:inline-block;
+    margin-bottom:1rem;
+    color:rgba(255,255,255,0.7);
+    background-color:rgba(255,255,255,0.08);
+    border-color:rgba(255,255,255,0.2);
+    border-style:solid;
+    border-width:1px;
+    border-radius:0.3rem;
+    transition:color 0.2s, background-color 0.2s, border-color 0.2s
+}
+.btn:hover{
+    color:rgba(255,255,255,0.8);
+    text-decoration:none;
+    background-color:rgba(255,255,255,0.2);
+    border-color:rgba(255,255,255,0.3)
+}
+.btn+.btn{
+    margin-left:1rem
+}
+@media screen and (min-width: 64em){
+    .btn{
+        padding:0.75rem 1rem
+    }
+}
+@media screen and (min-width: 42em) and (max-width: 64em){
+    .btn{
+        padding:0.6rem 0.9rem;
+        font-size:0.9rem
+    }
+}
+@media screen and (max-width: 42em){
+    .btn{
+        display:block;
+        width:100%;
+        padding:0.75rem;
+        font-size:0.9rem
+    }
+    .btn+.btn{
+        margin-top:1rem;
+        margin-left:0
+    }
+}
+.page-header{
+    color:#fff;
+    text-align:center;
+    background-color:#159957;
+    background-image:linear-gradient(120deg, #155799, #159957)
+}
+@media screen and (min-width: 64em){
+    .page-header{
+        padding:5rem 6rem
+    }
+}
+@media screen and (min-width: 42em) and (max-width: 64em){
+    .page-header{
+        padding:3rem 4rem
+    }
+}
+@media screen and (max-width: 42em){
+    .page-header{
+        padding:2rem 1rem
+    }
+}
+.project-name{
+    margin-top:0;
+    margin-bottom:0.1rem
+}
+@media screen and (min-width: 64em){
+    .project-name{
+        font-size:3.25rem
+    }
+}
+@media screen and (min-width: 42em) and (max-width: 64em){
+    .project-name{
+        font-size:2.25rem
+    }
+}
+@media screen and (max-width: 42em){
+    .project-name{
+        font-size:1.75rem
+    }
+}
+.project-tagline{
+    margin-bottom:2rem;
+    font-weight:normal;
+    opacity:0.7
+}
+@media screen and (min-width: 64em){
+    .project-tagline{
+        font-size:1.25rem
+    }
+}
+@media screen and (min-width: 42em) and (max-width: 64em){
+    .project-tagline{
+        font-size:1.15rem
+    }
+}
+@media screen and (max-width: 42em){
+    .project-tagline{
+        font-size:1rem
+    }
+}
+.main-content{
+    word-wrap:break-word
+}
+.main-content :first-child{
+    margin-top:0
+}
+@media screen and (min-width: 64em){
+    .main-content{
+        max-width:64rem;
+        padding:2rem 6rem;
+        margin:0 auto;
+        font-size:1.1rem
+    }
+}
+@media screen and (min-width: 42em) and (max-width: 64em){
+    .main-content{
+        padding:2rem 4rem;
+        font-size:1.1rem
+    }
+}
+@media screen and (max-width: 42em){
+    .main-content{
+        padding:2rem 1rem;
+        font-size:1rem
+    }
+}
+.main-content img{
+    max-width:100%
+}
+.main-content h1,.main-content h2,.main-content h3,.main-content h4,.main-content h5,.main-content h6{
+    margin-top:2rem;
+    margin-bottom:1rem;
+    font-weight:normal;
+    color:#159957
+}
+.main-content p{
+    margin-bottom:1em
+}
+.main-content code{
+    padding:2px 4px;
+    font-family:Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size:0.9rem;
+    color:#567482;
+    background-color:#f3f6fa;
+    border-radius:0.3rem
+}
+.main-content pre{
+    padding:0.8rem;
+    margin-top:0;
+    margin-bottom:1rem;
+    font:1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    color:#567482;
+    word-wrap:normal;
+    background-color:#f3f6fa;
+    border:solid 1px #dce6f0;
+    border-radius:0.3rem
+}
+.main-content pre>code{
+    padding:0;
+    margin:0;
+    font-size:0.9rem;
+    color:#567482;
+    word-break:normal;
+    white-space:pre;
+    background:transparent;
+    border:0
+}
+.main-content .highlight{
+    margin-bottom:1rem
+}
+.main-content .highlight pre{
+    margin-bottom:0;
+    word-break:normal
+}
+.main-content .highlight pre,.main-content pre{
+    padding:0.8rem;
+    overflow:auto;
+    font-size:0.9rem;
+    line-height:1.45;
+    border-radius:0.3rem;
+    -webkit-overflow-scrolling:touch
+}
+.main-content pre code,.main-content pre tt{
+    display:inline;
+    max-width:initial;
+    padding:0;
+    margin:0;
+    overflow:initial;
+    line-height:inherit;
+    word-wrap:normal;
+    background-color:transparent;
+    border:0
+}
+.main-content pre code:before,.main-content pre code:after,.main-content pre tt:before,.main-content pre tt:after{
+    content:normal
+}
+.main-content ul,.main-content ol{
+    margin-top:0
+}
+.main-content blockquote{
+    padding:0 1rem;
+    margin-left:0;
+    color:#819198;
+    border-left:0.3rem solid #dce6f0
+}
+.main-content blockquote>:first-child{
+    margin-top:0
+}
+.main-content blockquote>:last-child{
+    margin-bottom:0
+}
+.main-content table{
+    display:block;
+    width:100%;
+    overflow:auto;
+    word-break:normal;
+    word-break:keep-all;
+    -webkit-overflow-scrolling:touch
+}
+.main-content table th{
+    font-weight:bold
+}
+.main-content table th,.main-content table td{
+    padding:0.5rem 1rem;
+    border:1px solid #e9ebec
+}
+.main-content dl{
+    padding:0
+}
+.main-content dl dt{
+    padding:0;
+    margin-top:1rem;
+    font-size:1rem;
+    font-weight:bold
+}
+.main-content dl dd{
+    padding:0;
+    margin-bottom:1rem
+}
+.main-content hr{
+    height:2px;
+    padding:0;
+    margin:1rem 0;
+    background-color:#eff0f1;
+    border:0
+}
+.site-footer{
+    padding-top:2rem;
+    margin-top:2rem;
+    border-top:solid 1px #eff0f1
+}
+@media screen and (min-width: 64em){
+    .site-footer{
+        font-size:1rem
+    }
+}
+@media screen and (min-width: 42em) and (max-width: 64em){
+    .site-footer{
+        font-size:1rem
+    }
+}
+@media screen and (max-width: 42em){
+    .site-footer{
+        font-size:0.9rem
+    }
+}
+.site-footer-owner{
+    display:block;
+    font-weight:bold
+}
+.site-footer-credits{
+    color:#819198
+}
+.page-header{
+    background-color:#8C00CD;
+    background-image:linear-gradient(120deg, #3B0057, #8C00CD)
+}
+.main-content h1,.main-content h2,.main-content h3,.main-content h4,.main-content h5,.main-content h6{
+    margin-top:2rem;
+    margin-bottom:1rem;
+    font-weight:normal;
+    color:#3B0057
+}
+ 
+    </style>
+
   </head>
 
   <body>
@@ -26,7 +689,12 @@
     <main id="content" class="main-content" role="main">
       <h1>What is simulation lag?</h1>
 
-      <p><b>Simulation</b> is literally everything that you see happening in the game. Any time a Sim gets a glass of water, when a toilet breaks, when a plant grows, when weather changes, when a visitor invades your house, the game has to plan it and execute it by simulating the entire process. It's a complex system that can stop working correctly for many different reasons.</p>
+      <p><b>Simulation</b> is literally everything that you see 
+happening in the game. Any time a Sim gets a glass of water, when a 
+toilet breaks, when a plant grows, when weather changes, when a visitor 
+invades your house, the game has to plan it and execute it by simulating
+ the entire process. It's a complex system that can stop working 
+correctly for many different reasons.</p>
 
       <ul>
         <li>Simulation can get overloaded with too many actions at once, which often occurs when playing the game at Speed x3.</li>
@@ -35,103 +703,299 @@
         <li>Simulation can be often interrupted by other actions taking priority and then take a while to catch up.</li>
       </ul>
 
-      <p>Although it might not seem like that's true sometimes, the game does the best it can with the resources it has to perform the simulation as smoothly as possible.</p>
+      <p>Although it might not seem like that's true sometimes, the game
+ does the best it can with the resources it has to perform the 
+simulation as smoothly as possible.</p>
 
-      <p><b>Lag</b> can be recognized when the game still continues to work, yet every action takes a really long time to begin or to process. Sims should still be able to initiate actions, fulfill them, and finish performing these actions. It's when things feel sluggish or unresponsive for a couple of seconds.</p>
+      <p><b>Lag</b> can be recognized when the game still continues to 
+work, yet every action takes a really long time to begin or to process. 
+Sims should still be able to initiate actions, fulfill them, and finish 
+performing these actions. It's when things feel sluggish or unresponsive
+ for a couple of seconds.</p>
 
-      <p style="font-size: 0.9rem;"><i>Simulation lag has absolutely nothing to do with your game graphics rendering framerate being low or inconsistent. That process is entirely disconnected from the game simulation.</i></p>
+      <p style="font-size: 0.9rem;"><i>Simulation lag has absolutely 
+nothing to do with your game graphics rendering framerate being low or 
+inconsistent. That process is entirely disconnected from the game 
+simulation.</i></p>
 
       <h1>What can cause simulation lag?</h1>
-      <p>Most of the users will perceive lag as Sims slow response to perform actions. Sims are always attempting each and every possible action they can perform, on each and every possible Sim and object in the world and their inventory, within the limitations of their current situation, traits, moodlets, and relationships.</p>
+      <p>Most of the users will perceive lag as Sims slow response to 
+perform actions. Sims are always attempting each and every possible 
+action they can perform, on each and every possible Sim and object in 
+the world and their inventory, within the limitations of their current 
+situation, traits, moodlets, and relationships.</p>
 
       <h3>Volume of Actions</h3>
-      <p>Sims are usually spawned with limited purpose and only care to do the things that fit the reason they were spawned for (like a Bartender only standing behind the bar or a random Sim walking by the neighborhood), which usually makes them the least lag-producing culprit. The opposite is true for the Sims you play as, and Sims that spawn as a visitor or resident, they can do everything, anywhere, with anybody and anything. The game limits you to a maximum of 8 playable Sims, with a limit of 20-ish Sims within the loaded zone. Even on a densely populated by objects location, this shouldn't be an issue for most computers to run smoothly. It's unlikely that Sims simply existing will cause major simulation lag, but that is something you can suspect on an older computer.</p>
+      <p>Sims are usually spawned with limited purpose and only care to 
+do the things that fit the reason they were spawned for (like a 
+Bartender only standing behind the bar or a random Sim walking by the 
+neighborhood), which usually makes them the least lag-producing culprit.
+ The opposite is true for the Sims you play as, and Sims that spawn as a
+ visitor or resident, they can do everything, anywhere, with anybody and
+ anything. The game limits you to a maximum of 8 playable Sims, with a 
+limit of 20-ish Sims within the loaded zone. Even on a densely populated
+ by objects location, this shouldn't be an issue for most computers to 
+run smoothly. It's unlikely that Sims simply existing will cause major 
+simulation lag, but that is something you can suspect on an older 
+computer.</p>
 
       <p style="font-size: 0.9rem;"><i>Sims with a limited purpose are mostly recognizable by their role displayed as the red text above their name.</i></p>
 
       <h3>Intrusive Actions</h3>
-      <p>Although a big number of Sims present at once might not immediately cause lag, their actions can. Sims always attempt to do something, and what they decide to do depends on their situation, traits, moodlets, and relationships.</p>
+      <p>Although a big number of Sims present at once might not 
+immediately cause lag, their actions can. Sims always attempt to do 
+something, and what they decide to do depends on their situation, 
+traits, moodlets, and relationships.</p>
       <ul>
-        <li>Sims can end up choosing to perform actions that other Sims are attempting to perform as well. This results in them failing, and that means they might stand around for a couple of seconds, waiting for the next attempt at doing something.</li>
-        <li>Sims will very often interrupt each other, especially with social interactions, which often results in them standing in place and waiting for the other Sim to walk up to them. When you see a Sim standing in place for a while, it's a good guess that they are waiting for another Sim to reach them.</li>
-        <li>Sims with limited purpose or limited environment might stand around doing nothing as they are waiting for an opportunity to do the only thing they can do. If the object or Sim they need to interact with is occupied, there's no space or no way to reach the intended location or object, or the environment doesn't provide the necessary objects to interact with, Sims will simply do nothing.</li>
+        <li>Sims can end up choosing to perform actions that other Sims 
+are attempting to perform as well. This results in them failing, and 
+that means they might stand around for a couple of seconds, waiting for 
+the next attempt at doing something.</li>
+        <li>Sims will very often interrupt each other, especially with 
+social interactions, which often results in them standing in place and 
+waiting for the other Sim to walk up to them. When you see a Sim 
+standing in place for a while, it's a good guess that they are waiting 
+for another Sim to reach them.</li>
+        <li>Sims with limited purpose or limited environment might stand
+ around doing nothing as they are waiting for an opportunity to do the 
+only thing they can do. If the object or Sim they need to interact with 
+is occupied, there's no space or no way to reach the intended location 
+or object, or the environment doesn't provide the necessary objects to 
+interact with, Sims will simply do nothing.</li>
       </ul>
 
-      <p style="font-size: 0.9rem;"><i>Sims themselves are a dynamic element that affects the world and other Sims, even if they are on the other side of the zone. Autonomy doesn't exactly predict what will happen, so it can make mistakes that result in wasted computation time.</i></p>
+      <p style="font-size: 0.9rem;"><i>Sims themselves are a dynamic 
+element that affects the world and other Sims, even if they are on the 
+other side of the zone. Autonomy doesn't exactly predict what will 
+happen, so it can make mistakes that result in wasted computation time.</i></p>
 
       <h3>Problematic Mods</h3>
-      <p>Autonomy is driven by moodlets (the visible ones and the invisible ones). Moodlets come mostly from traits and the situation a Sim is in, and they provide a list of reasons why Sims should do certain things. These reasons are the only thing that drives Sims' decision-making. Autonomy looks at the available choices, picks something relevant and with high priority, and goes with it. If a mod provides a lot of these reasons, makes them often relevant and prioritized, it can result in other actions being frequently ignored, interrupted, or overridden to be a lower priority. This results in intended gameplay simply not working.</p>
+      <p>Autonomy is driven by moodlets (the visible ones and the 
+invisible ones). Moodlets come mostly from traits and the situation a 
+Sim is in, and they provide a list of reasons why Sims should do certain
+ things. These reasons are the only thing that drives Sims' 
+decision-making. Autonomy looks at the available choices, picks 
+something relevant and with high priority, and goes with it. If a mod 
+provides a lot of these reasons, makes them often relevant and 
+prioritized, it can result in other actions being frequently ignored, 
+interrupted, or overridden to be a lower priority. This results in 
+intended gameplay simply not working.</p>
 
-      <p style="font-size: 0.9rem;"><i>It's very easy to make Sims do new things, but it's very hard to keep a balance that properly co-exists with the rest of the game. This becomes extra difficult once multiple mods are mixed together.</i></p>
+      <p style="font-size: 0.9rem;"><i>It's very easy to make Sims do 
+new things, but it's very hard to keep a balance that properly co-exists
+ with the rest of the game. This becomes extra difficult once multiple 
+mods are mixed together.</i></p>
 
       <h1>How to fix simulation lag?</h1>
-      <p>Unfortunately, there is no magic solution for lag. Computing takes time, and sometimes it can take too long, resulting in lag. You will always have the best performance when running the game by itself, without any mods... but that's boring. So the best solution is to find the source of lag and eliminate it by removing or adjusting the mods that produce it. If you're not using any mods, then your best bet is to reduce the number of interactive objects.</p>
+      <p>Unfortunately, there is no magic solution for lag. Computing 
+takes time, and sometimes it can take too long, resulting in lag. You 
+will always have the best performance when running the game by itself, 
+without any mods... but that's boring. So the best solution is to find 
+the source of lag and eliminate it by removing or adjusting the mods 
+that produce it. If you're not using any mods, then your best bet is to 
+reduce the number of interactive objects.</p>
 
-      <p>There is no easy way of testing specifically what could be affecting the performance of your game. In some cases, it's a general issue related to the volume of available possibilities, or it can be the high number of mods present in your game rather than a particularly problematic mod or two. The following instructions are meant to teach you about the basic performance of the game and pinpoint one or two mods that could be a source of lag.</p>
+      <p>There is no easy way of testing specifically what could be 
+affecting the performance of your game. In some cases, it's a general 
+issue related to the volume of available possibilities, or it can be the
+ high number of mods present in your game rather than a particularly 
+problematic mod or two. The following instructions are meant to teach 
+you about the basic performance of the game and pinpoint one or two mods
+ that could be a source of lag.</p>
 
       <p>Begin by downloading and installing the <b>101 Diagnostics</b> mod. This mod will allow you to read some useful information while in-game.</p>
 
-      <center><a class="btn" style="background-color: rgba(140,0,205,0.7);" href="/TURBODRIVER_101_Diagnostics.ts4script?raw=true">Download 101 Diagnostics</a></center>
+      <center><a class="btn" style="background-color: rgba(140,0,205,0.7);" href="https://turbodriver.github.io/TURBODRIVER_101_Diagnostics.ts4script?raw=true">Download 101 Diagnostics</a></center>
 
       <p style="font-size: 0.9rem;"><i>This is a TS4SCRIPT file, so place it directly into the <b>Documents\The Sims 4\Mods</b> folder.</i></p>
 
       <h1>How to use the <b>101 Diagnostics</b> Mod?</h1>
-      <p>The <b>101 Diagnostics</b> mod displays information about the game state and the clicked Sim. To understand where the lag could be coming from, you need to understand what each displayed variable means.</p>
+      <p>The <b>101 Diagnostics</b> mod displays information about the 
+game state and the clicked Sim. To understand where the lag could be 
+coming from, you need to understand what each displayed variable means.</p>
       <p>To display the <b>101 Diagnostics</b> dialog window, click on any Sim and find the '101 Diagnostics' option.</p>
 
-      <center><img src="/top.png" /></center>
-      <p><b>Tickrate</b> (should be less than 50ms)<br>Tickrate is the amount of time it takes the game to process one simulation update. The displayed value is an average based on the last 100 simulation updates. Values <u>below 50ms</u> mean that the game is performing optimally. Anything above 100ms is considered high and indicates that the simulation is lagging. A high Maximum value indicates sporadic spikes of lag, which are fine if the average Tickrate value is below 50ms.<br><font size="0.5rem">Continue reading to learn what causes high Tickrate values.</font></p>
+      <center><img src="SimulationTop.png"></center>
+      <p><b>Tickrate</b> (should be less than 50ms)<br>Tickrate is the 
+amount of time it takes the game to process one simulation update. The 
+displayed value is an average based on the last 100 simulation updates. 
+Values <u>below 50ms</u> mean that the game is performing optimally. 
+Anything above 100ms is considered high and indicates that the 
+simulation is lagging. A high Maximum value indicates sporadic spikes of
+ lag, which are fine if the average Tickrate value is below 50ms.<br><font size="0.5rem">Continue reading to learn what causes high Tickrate values.</font></p>
 
       <p><b>Time Speeds</b> (diagnose only when running the game at normal speed)<br>Time Speeds is a list of time speeds during which the diagnostic data was collected. You should <u>always collect diagnostic data when running the game at normal speed</u>. Running the game at a higher time speed than normal will always result in incorrect diagnostic values.<br><font size="0.5rem">Running the game at normal speed will always result in the best simulation performance.</font></p>
 
-      <p><b>Time Desync</b> (should be less than 1500ms)<br>Time Desync is the amount of difference in time before processing and after processing of simulation. Time can get progressively desynchronized as simulation gets overloaded with tasks to process, which most commonly occurs when running the game on double or triple speed. Ideally, the difference of time should be 0ms, but anything below 1500ms means that the difference in time is less than an in-game minute. Once the time difference reaches 10000ms and persists for 10 seconds, the game enters Low-Performance Mode, slowing time down, which is most noticeable when running the game on triple speed for an extended period of time.<br><font size="0.5rem">Continue reading to learn what causes high Time Desync values.</font></p>
+      <p><b>Time Desync</b> (should be less than 1500ms)<br>Time Desync 
+is the amount of difference in time before processing and after 
+processing of simulation. Time can get progressively desynchronized as 
+simulation gets overloaded with tasks to process, which most commonly 
+occurs when running the game on double or triple speed. Ideally, the 
+difference of time should be 0ms, but anything below 1500ms means that 
+the difference in time is less than an in-game minute. Once the time 
+difference reaches 10000ms and persists for 10 seconds, the game enters 
+Low-Performance Mode, slowing time down, which is most noticeable when 
+running the game on triple speed for an extended period of time.<br><font size="0.5rem">Continue reading to learn what causes high Time Desync values.</font></p>
 
-      <p><b>Runtime</b> (amount of time since last loading screen)<br>Runtime is the amount of time in minutes since the last loading screen, as the simulation resets after each loading screen. All diagnostic values should persist in relatively the same state, not increasing and not decreasing in any substantial amount, as you continue to play the game. Any substantial increase in any of the displayed diagnostic values could indicate a problem in relation to what that value represents.<br><font size="0.5rem">Continue reading to learn what certain diagnostic values represent.</font></p>
+      <p><b>Runtime</b> (amount of time since last loading screen)<br>Runtime
+ is the amount of time in minutes since the last loading screen, as the 
+simulation resets after each loading screen. All diagnostic values 
+should persist in relatively the same state, not increasing and not 
+decreasing in any substantial amount, as you continue to play the game. 
+Any substantial increase in any of the displayed diagnostic values could
+ indicate a problem in relation to what that value represents.<br><font size="0.5rem">Continue reading to learn what certain diagnostic values represent.</font></p>
 
-      <p><b>Time Scale</b> (should be 25ms)<br>Time Scale is the speed at which the game time progresses. Mods are capable of modifying the Time Scale values, making the game time faster or slower, which can have a negative impact on the simulation performance. If the Time Scale value is less than 25ms, the game will be running faster, which requires it to process simulation faster and result in high Tickrate and high Time Desync (lag).<br><font size="0.5rem">It's recommended not to modify the game time speed.</font></p>
+      <p><b>Time Scale</b> (should be 25ms)<br>Time Scale is the speed 
+at which the game time progresses. Mods are capable of modifying the 
+Time Scale values, making the game time faster or slower, which can have
+ a negative impact on the simulation performance. If the Time Scale 
+value is less than 25ms, the game will be running faster, which requires
+ it to process simulation faster and result in high Tickrate and high 
+Time Desync (lag).<br><font size="0.5rem">It's recommended not to modify the game time speed.</font></p>
 
-      <p><b>Mods</b> (number of loaded mods)<br>Mods are usually not a direct source of lag, but their high number can indicate that the game simulation is potentially affected by it. The displayed in parentheses number indicates the number of loaded script mods.<br><font size="0.5rem">High number of mods that contribute to gameplay mechanics can affect simulation performance.</font></p>
+      <p><b>Mods</b> (number of loaded mods)<br>Mods are usually not a 
+direct source of lag, but their high number can indicate that the game 
+simulation is potentially affected by it. The displayed in parentheses 
+number indicates the number of loaded script mods.<br><font size="0.5rem">High number of mods that contribute to gameplay mechanics can affect simulation performance.</font></p>
 
-      <p><b>Errors</b> (number of occurred errors)<br>Errors are a pretty good indicator of the game not working correctly. Although not all errors will impact simulation performance, a high number of errors will usually result in the game failing to perform all of its tasks which negatively affects simulation. Most of the time, errors result from installed Mods for reasons like outdated or broken files, outdated or broken code, conflicts, and incompatibility between the mods version and game version.<br><font size="0.5rem">Problematic mods need to be identified and updated if possible or removed.</font></p>
+      <p><b>Errors</b> (number of occurred errors)<br>Errors are a 
+pretty good indicator of the game not working correctly. Although not 
+all errors will impact simulation performance, a high number of errors 
+will usually result in the game failing to perform all of its tasks 
+which negatively affects simulation. Most of the time, errors result 
+from installed Mods for reasons like outdated or broken files, outdated 
+or broken code, conflicts, and incompatibility between the mods version 
+and game version.<br><font size="0.5rem">Problematic mods need to be identified and updated if possible or removed.</font></p>
 
-      <p><b>Timeline Heap</b> (number of simulation tasks)<br>Timeline Heap is the collection of all the tasks the simulation has to process. It mainly consists of <b>Active</b> element tasks, scheduled <b>Alarm</b> elements, and <b>Garbage</b> elements to clean. The Timeline attempts to process at least one Active or Alarm element which happens every simulation update (look Tickrate).</p>
+      <p><b>Timeline Heap</b> (number of simulation tasks)<br>Timeline Heap is the collection of all the tasks the simulation has to process. It mainly consists of <b>Active</b> element tasks, scheduled <b>Alarm</b> elements, and <b>Garbage</b>
+ elements to clean. The Timeline attempts to process at least one Active
+ or Alarm element which happens every simulation update (look Tickrate).</p>
       <ul>
-        <li>High number of <b>Active</b> tasks combined with high Tickrate will result in visible lag in a form of Sims idling. Usually, the number of Active elements isn't higher than five times the number of Sims present in the world zone. Additionally, scheduled Alarms that repeatedly occur every 3 or fewer in-game minutes are counted as Active tasks due to their occurrence frequency.</li>
-        <li>High number of <b>Alarms</b> doesn't have a direct impact on performance as these are scheduled tasks, so unless it's their time to run, they aren't doing anything. The exception to the rule is Alarms that run repeatedly every 3 or fewer in-game minutes.</li>
-        <li>High number of <b>Garbage</b> elements doesn't have a direct impact on performance as these are a residue of Active elements that got rescheduled to run at a different time. These elements are cleaned once they occupy more than 50% of the Timeline Heap.</li>
+        <li>High number of <b>Active</b> tasks combined with high 
+Tickrate will result in visible lag in a form of Sims idling. Usually, 
+the number of Active elements isn't higher than five times the number of
+ Sims present in the world zone. Additionally, scheduled Alarms that 
+repeatedly occur every 3 or fewer in-game minutes are counted as Active 
+tasks due to their occurrence frequency.</li>
+        <li>High number of <b>Alarms</b> doesn't have a direct impact on
+ performance as these are scheduled tasks, so unless it's their time to 
+run, they aren't doing anything. The exception to the rule is Alarms 
+that run repeatedly every 3 or fewer in-game minutes.</li>
+        <li>High number of <b>Garbage</b> elements doesn't have a direct
+ impact on performance as these are a residue of Active elements that 
+got rescheduled to run at a different time. These elements are cleaned 
+once they occupy more than 50% of the Timeline Heap.</li>
       </ul>
 
-      <p>Due to the game processing one element per simulation update, if the Timeline Heap consists of many Active elements and the Tickrate is high, the number of Active tasks multiplied by the Tickrate can result in a long total processing time, which is one of the main reasons for Sims to idle. Otherwise, Sims might not be idle but instead of waiting or stuck caused by other factors.<br><font size="0.5rem">High number of Active tasks mostly comes from the high number of Sims present in the loaded world zone.</font></p>
+      <p>Due to the game processing one element per simulation update, 
+if the Timeline Heap consists of many Active elements and the Tickrate 
+is high, the number of Active tasks multiplied by the Tickrate can 
+result in a long total processing time, which is one of the main reasons
+ for Sims to idle. Otherwise, Sims might not be idle but instead of 
+waiting or stuck caused by other factors.<br><font size="0.5rem">High number of Active tasks mostly comes from the high number of Sims present in the loaded world zone.</font></p>
 
-      <p><b>Active Sims</b> (number of Sims)<br>Active Sims is the number of Sims that are currently present in the loaded world zone and the maximum number of Sims that can be present in the loaded world zone, which is usually 20. <b>Household</b> is the number of Sims in the household and the maximum number of Sims that can be in the household, which is by default 8. <b>World</b> is the total number of Sims in the entire game save and the total number of households in the entire game save. Usage of Mods to extend the limit of Sims present in the loaded world zone or in the Household can be a source of increased number of Timeline Heap Active Tasks which can result in lag.<br><font size="0.5rem">It's recommended to keep the loaded Sims limit to 20 and the household limit to 8.</font></p>
+      <p><b>Active Sims</b> (number of Sims)<br>Active Sims is the 
+number of Sims that are currently present in the loaded world zone and 
+the maximum number of Sims that can be present in the loaded world zone,
+ which is usually 20. <b>Household</b> is the number of Sims in the household and the maximum number of Sims that can be in the household, which is by default 8. <b>World</b>
+ is the total number of Sims in the entire game save and the total 
+number of households in the entire game save. Usage of Mods to extend 
+the limit of Sims present in the loaded world zone or in the Household 
+can be a source of increased number of Timeline Heap Active Tasks which 
+can result in lag.<br><font size="0.5rem">It's recommended to keep the loaded Sims limit to 20 and the household limit to 8.</font></p>
 
-      <p><b>Active Interactions & Autonomy Requests</b> (number of actions Sims are performing)<br>Sims that are present in the loaded world zone will request a task from the autonomy service, by creating an Autonomy Request, and receive that task which becomes their Active Interaction. Requesting an autonomy task can be a heavy process and it is handled by the Timeline Heap as an Active element. The amount of time it takes to process an Autonomy Request depends on the number of Active Sims and Active Objects, which are present in the loaded world zone. The number of Autonomy Requests depends on the number of Active Sims and how often they need to find a new task to perform.<br><font size="0.5rem">High number of Active Sims, Active Objects, and Autonomy Interactions increase the processing time of Autonomy Requests.</font></p>
+      <p><b>Active Interactions &amp; Autonomy Requests</b> (number of actions Sims are performing)<br>Sims
+ that are present in the loaded world zone will request a task from the 
+autonomy service, by creating an Autonomy Request, and receive that task
+ which becomes their Active Interaction. Requesting an autonomy task can
+ be a heavy process and it is handled by the Timeline Heap as an Active 
+element. The amount of time it takes to process an Autonomy Request 
+depends on the number of Active Sims and Active Objects, which are 
+present in the loaded world zone. The number of Autonomy Requests 
+depends on the number of Active Sims and how often they need to find a 
+new task to perform.<br><font size="0.5rem">High number of Active Sims, Active Objects, and Autonomy Interactions increase the processing time of Autonomy Requests.</font></p>
 
-      <p><b>Active Objects</b> (number of objects)<br>Active Objects is the number of interactive autonomous objects and the number of all objects (interactive and non-interactive). The interactive autonomous objects are the only objects present in the loaded world zone that Sims will attempt to interact with. <b>Autonomy Interactions</b> is the total of unique interactions available on interactive autonomous objects that are considered when performing an Autonomy Request. Sims that request an autonomous task will consider interacting with every available interactive object using every possible autonomous interaction. High number of interactive objects and autonomous interactions increase the amount of time it takes to process every Autonomy Request which can result in a high Tickrate. <b>Operating Objects</b> is the number of objects that perform a task on their own, without the involvement of Sims. These objects periodically or continuously perform a task (like growing as a plant) which is handled by the Timeline Heap as a scheduled Alarm element.<br><font size="0.5rem">High number of interactive autonomous objects and operating objects can increase the Tickrate and processing time of Autonomy Requests.</font></p>
+      <p><b>Active Objects</b> (number of objects)<br>Active Objects is 
+the number of interactive autonomous objects and the number of all 
+objects (interactive and non-interactive). The interactive autonomous 
+objects are the only objects present in the loaded world zone that Sims 
+will attempt to interact with. <b>Autonomy Interactions</b> is the total
+ of unique interactions available on interactive autonomous objects that
+ are considered when performing an Autonomy Request. Sims that request 
+an autonomous task will consider interacting with every available 
+interactive object using every possible autonomous interaction. High 
+number of interactive objects and autonomous interactions increase the 
+amount of time it takes to process every Autonomy Request which can 
+result in a high Tickrate. <b>Operating Objects</b> is the number of 
+objects that perform a task on their own, without the involvement of 
+Sims. These objects periodically or continuously perform a task (like 
+growing as a plant) which is handled by the Timeline Heap as a scheduled
+ Alarm element.<br><font size="0.5rem">High number of interactive 
+autonomous objects and operating objects can increase the Tickrate and 
+processing time of Autonomy Requests.</font></p>
 
-      <p style="font-size: 0.9rem;"><i>Whether you use mods or not, the information presented above can be useful to recognize basic simulation issues that could lead to lag. The instructions below are mostly useful for users with mods.</i></p>
+      <p style="font-size: 0.9rem;"><i>Whether you use mods or not, the 
+information presented above can be useful to recognize basic simulation 
+issues that could lead to lag. The instructions below are mostly useful 
+for users with mods.</i></p>
 
-      <center><img src="/bottom.png" /></center>
+      <center><img src="SimulationBottom.png"></center>
 
-      <p><b>Sim State</b> (their active interactions)<br>Sims that are doing something, are performing an interaction. In a simple way, interactions are divided into three main types - current posture, main task, and an optional mixer for the main task or current posture. Posture is Sim's current state of body, like standing, sitting, or swimming. The main task is something a Sim is actively doing, like washing hands, walking, or having a conversation. A mixer is an additional task to the already existing main task, like talking about the weather while in a conversation or doing different poses while looking into a mirror.</p>
+      <p><b>Sim State</b> (their active interactions)<br>Sims that are 
+doing something, are performing an interaction. In a simple way, 
+interactions are divided into three main types - current posture, main 
+task, and an optional mixer for the main task or current posture. 
+Posture is Sim's current state of body, like standing, sitting, or 
+swimming. The main task is something a Sim is actively doing, like 
+washing hands, walking, or having a conversation. A mixer is an 
+additional task to the already existing main task, like talking about 
+the weather while in a conversation or doing different poses while 
+looking into a mirror.</p>
 
-      <p>If you suspect a Sim is doing something suspicious, you should be able to see what it is on the Sim State list. Most commonly Sims will stand around idle for a long time waiting for another Sim to walk up to them for a conversation, which can be recognized by a 'chat' or 'social' word in the interaction name.</p>
+      <p>If you suspect a Sim is doing something suspicious, you should 
+be able to see what it is on the Sim State list. Most commonly Sims will
+ stand around idle for a long time waiting for another Sim to walk up to
+ them for a conversation, which can be recognized by a 'chat' or 
+'social' word in the interaction name.</p>
 
-      <p><b>Sim Situations</b> (their active situations)<br>Sims don't exist without a reason, unless they are currently playable. Situations are the main reason for a Sim to appear and perform actions, as Sims without a Situation will leave the loaded world zone. Every Situation comes with a role (displayed in parentheses) that defines Sim's purpose. Situations are one of the main sources of Moodlets with Gameplay Modifiers that adjust Sim behavior, but the names of the current Gameplay Modifiers might not be enough to recognize the reason for Sim existence and purpose.</p>
+      <p><b>Sim Situations</b> (their active situations)<br>Sims don't 
+exist without a reason, unless they are currently playable. Situations 
+are the main reason for a Sim to appear and perform actions, as Sims 
+without a Situation will leave the loaded world zone. Every Situation 
+comes with a role (displayed in parentheses) that defines Sim's purpose.
+ Situations are one of the main sources of Moodlets with Gameplay 
+Modifiers that adjust Sim behavior, but the names of the current 
+Gameplay Modifiers might not be enough to recognize the reason for Sim 
+existence and purpose.</p>
 
-      <p>If you're questioning why a Sim has shown up and what they are meant to do, you should be able to see it on the Sim Situations list.</p>
+      <p>If you're questioning why a Sim has shown up and what they are 
+meant to do, you should be able to see it on the Sim Situations list.</p>
 
-      <p><b>Sim Gameplay Modifiers</b> (their active gameplay behavior modifiers for autonomy)<br>Sims autonomy behavior is dependent on Gameplay Modifiers that come from Moodlets (Buffs). Not all Moodlets come with Gameplay Modifiers, but all Gameplay Modifiers come from Moodlets. Most of the Moodlets that provide a gameplay modifier are invisible, but usually come from a visible source. Moodlets can be received from many different sources - traits, situations, relationships, interactions, weather, surroundings, etc. The name of the Moodlet indicates its general purpose and should be a decent indicator of the way it modifies autonomy behavior.</p>
+      <p><b>Sim Gameplay Modifiers</b> (their active gameplay behavior modifiers for autonomy)<br>Sims
+ autonomy behavior is dependent on Gameplay Modifiers that come from 
+Moodlets (Buffs). Not all Moodlets come with Gameplay Modifiers, but all
+ Gameplay Modifiers come from Moodlets. Most of the Moodlets that 
+provide a gameplay modifier are invisible, but usually come from a 
+visible source. Moodlets can be received from many different sources - 
+traits, situations, relationships, interactions, weather, surroundings, 
+etc. The name of the Moodlet indicates its general purpose and should be
+ a decent indicator of the way it modifies autonomy behavior.</p>
 
-      <p>If a Sim is behaving oddly, by refusing to perform certain activities or by prioritizing certain activities over other activities, you can check if there's a Moodlet that would explain it on the Sim Game Modifiers list. Moodlets introduced by mods have a highlighted name, as they may have the most impact on Sim's behavior due to imbalanced implementation.</p>
+      <p>If a Sim is behaving oddly, by refusing to perform certain 
+activities or by prioritizing certain activities over other activities, 
+you can check if there's a Moodlet that would explain it on the Sim Game
+ Modifiers list. Moodlets introduced by mods have a highlighted name, as
+ they may have the most impact on Sim's behavior due to imbalanced 
+implementation.</p>
 
       <p><br><br></p>
 
       <footer class="site-footer">
-        <span class="site-footer-credits">TURBODRIVER 2021 | <a href="https://pages.github.com">Cayman Theme</a></span>
+        <span class="site-footer-credits">TURBODRIVER 2021 | <a href="https://pages.github.com/">Cayman Theme</a></span>
       </footer>
 
     </main>
-  </body>
+  
 
-</html>
+
+</body></html>
